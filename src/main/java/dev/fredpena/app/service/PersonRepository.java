@@ -19,7 +19,7 @@ public class PersonRepository implements PanacheRepository<Person> {
     public PanacheQuery<Person> findByCriteria(String searchTerm) {
 
         String query = """
-                lower(firstName) LIKE :firstName OR lower(lastName) LIKE :lastName OR lower(email) LIKE :email 
+                lower(firstName) LIKE :firstName OR lower(lastName) LIKE :lastName OR lower(email) LIKE :email\s
                 OR lower(phone) LIKE :phone OR lower(role) LIKE :role OR lower(occupation) LIKE :occupation
                 """;
 

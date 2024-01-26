@@ -27,6 +27,11 @@ import dev.fredpena.app.service.Person;
 import dev.fredpena.app.service.PersonService;
 import io.quarkus.panache.common.Page;
 
+/**
+ * @author me@fredpena.dev
+ * @created 24/01/2024  - 11:41
+ */
+
 @PageTitle("List - Person")
 @Route(value = "")
 @Uses(Icon.class)

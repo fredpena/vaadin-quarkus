@@ -1,14 +1,17 @@
 package dev.fredpena.app.service;
 
 import io.quarkus.panache.common.Page;
-import io.quarkus.panache.common.Parameters;
-import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 import java.security.InvalidParameterException;
 import java.util.List;
+
+/**
+ * @author me@fredpena.dev
+ * @created 24/01/2024  - 11:53
+ */
 
 @ApplicationScoped
 @AllArgsConstructor

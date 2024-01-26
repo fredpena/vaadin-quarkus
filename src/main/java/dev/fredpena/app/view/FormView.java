@@ -26,7 +26,10 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 import dev.fredpena.app.service.Person;
 import dev.fredpena.app.service.PersonService;
 
-
+/**
+ * @author me@fredpena.dev
+ * @created 24/01/2024  - 11:41
+ */
 public class FormView {
 
     private final TextField firstName = new TextField("First Name");
