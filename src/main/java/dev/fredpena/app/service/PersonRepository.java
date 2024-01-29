@@ -1,5 +1,6 @@
 package dev.fredpena.app.service;
 
+import dev.fredpena.app.data.Person;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Parameters;

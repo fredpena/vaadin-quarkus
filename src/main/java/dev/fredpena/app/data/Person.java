@@ -1,4 +1,4 @@
-package dev.fredpena.app.service;
+package dev.fredpena.app.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;

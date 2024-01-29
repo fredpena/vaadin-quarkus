@@ -1,8 +1,6 @@
 package dev.fredpena.app.view;
 
 import com.vaadin.flow.component.ClickEvent;
-import com.vaadin.flow.component.HasLabel;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
@@ -12,10 +10,6 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
@@ -23,8 +17,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import dev.fredpena.app.service.Person;
+import dev.fredpena.app.data.Person;
 import dev.fredpena.app.service.PersonService;
+import dev.fredpena.app.utils.NotificationUtil;
 
 /**
  * @author me@fredpena.dev
@@ -96,14 +91,14 @@ public class FormView {
             confirmDialog.setConfirmText("Continue");
             confirmDialog.addConfirmListener(event -> {
                 personService.createOrUpdate(element);
-                notificationSuccess("The transaction was successful.");
+                NotificationUtil.notificationSuccess("The transaction was successful.");
                 actionRunnable.run();
             });
 
             confirmDialog.open();
 
         } catch (ValidationException validationException) {
-            notificationError(validationException);
+            NotificationUtil.notificationError(validationException);
         }
     }
 
@@ -120,7 +115,7 @@ public class FormView {
         confirmDialog.setConfirmButtonTheme("error primary");
         confirmDialog.addConfirmListener(event -> {
             personService.delete(element.getCode());
-            notificationSuccess("The record was deleted.");
+            NotificationUtil.notificationSuccess("The record was deleted.");
             actionRunnable.run();
         });
 
@@ -182,48 +177,5 @@ public class FormView {
         return buttonLayout;
     }
 
-    public void notificationError(String msg) {
-        final Notification notification = new Notification();
-        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-
-        notification(notification, msg);
-    }
-
-    public void notificationSuccess(String msg) {
-        final Notification notification = new Notification();
-        notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-
-        notification(notification, msg);
-    }
-
-    private void notification(Notification notification, String msg) {
-        notification.setDuration(3000);
-        notification.setPosition(Notification.Position.TOP_END);
-
-        Icon icon = VaadinIcon.CHECK_CIRCLE.create();
-
-        final Button closeButton = new Button(new Icon("lumo", "cross"), event -> notification.close());
-        closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
-        closeButton.getElement().setAttribute("aria-label", "Close");
-        closeButton.getStyle().setMargin("0 0 0 var(--lumo-space-l)");
-
-        final HorizontalLayout layout = new HorizontalLayout(icon, new Text(msg), closeButton);
-        layout.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        notification.add(layout);
-        notification.open();
-    }
-
-    public void notificationError(ValidationException validationException) {
-        final Notification notification = new Notification();
-        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-
-        validationException.getFieldValidationErrors().forEach(err -> err.getMessage().ifPresent(msg2 -> {
-            String label = ((HasLabel) err.getBinding().getField()).getLabel();
-
-            notificationError(label + " -> " + msg2);
-        }));
-
-    }
 
 }

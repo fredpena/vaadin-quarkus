@@ -23,7 +23,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import dev.fredpena.app.service.Person;
+import dev.fredpena.app.data.Person;
 import dev.fredpena.app.service.PersonService;
 import io.quarkus.panache.common.Page;
 
@@ -33,7 +33,7 @@ import io.quarkus.panache.common.Page;
  */
 
 @PageTitle("List - Person")
-@Route(value = "")
+@Route(value = "person")
 @Uses(Icon.class)
 public class PersonView extends VerticalLayout {
 

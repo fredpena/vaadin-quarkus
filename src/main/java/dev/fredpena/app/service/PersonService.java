@@ -1,9 +1,10 @@
 package dev.fredpena.app.service;
 
+import dev.fredpena.app.data.Person;
 import io.quarkus.panache.common.Page;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.security.InvalidParameterException;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 
 @ApplicationScoped
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PersonService {
 
     private final PersonRepository personRepository;
