@@ -2,6 +2,9 @@
 
 > The objective of this project is purely for learning, I am testing combining technology like Vaadin Flow with Quarkus
 
+![Screenshot 2024-01-29 at 15 00 17](https://github.com/fredpena/vaadin-quarkus/assets/5680906/1d001424-a576-4ebd-af1b-fa287a5383d0)
+
+
 ![Screenshot 2024-01-26 at 10 24 50](https://github.com/fredpena/vaadin-quarkus/assets/5680906/a52f112b-0158-4e2c-a8e0-0069dd3e21c8)
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
